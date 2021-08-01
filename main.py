@@ -13,6 +13,7 @@ def getscore(ele):
     return int(ele.split(" ")[-1])
 
 
+# Remove words which are two words
 with open("words.txt", "r+") as f:
     lines = f.readlines()
     f.seek(0)
@@ -21,6 +22,7 @@ with open("words.txt", "r+") as f:
             f.write(line)
     f.truncate()
 
+# Calculate score for each word
 with open("words.txt", "r+") as fi:
     lines = fi.readlines()
     fi.seek(0)
@@ -62,6 +64,7 @@ with open("words.txt", "r+") as fi:
         fi.write(data + " " + str(value) + "\n")
     fi.truncate()
 
+# Sort the file
 with open("words.txt", "r+") as fi:
     lines = fi.readlines()
     fi.seek(0)
