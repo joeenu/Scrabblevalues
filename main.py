@@ -2,6 +2,14 @@ from rich.progress import track
 
 
 def getscore(ele):
+    """
+    getscore Gets the scrabble score of each line in the elements
+
+    :param ele: The line
+    :type ele: str
+    :return: The score
+    :rtype: int
+    """
     return int(ele.split(" ")[-1])
 
 
