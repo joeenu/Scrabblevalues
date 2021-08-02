@@ -1,4 +1,12 @@
 def calcScore(line):
+    """
+    calcScore Calculate the scrabble score of the word in the line
+
+    :param line: the line/word to calculate the score from
+    :type line: str
+    :return: The scrabble score of the word
+    :rtype: int
+    """
     a = line.count("a")
     b = line.count("b")
     c = line.count("c")
