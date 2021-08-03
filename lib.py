@@ -39,14 +39,26 @@ def calcScore(line):
     return (e+ n+ s+ i+ r+ t+ u+ a+ d) + (h+ g+ l+ o)*2 + (m+ b+ w+ z)*3 + (c+ f+ k+ p)*4 + (ä+ j+ ü+ v)*6 + (ö+ x)*8 + (q+ x)*10
 
 
-def calcScoreInRange(arr, low, high, data):
+def calcScoreInRange(arr, pack, data):
     values = []
-    for i in range(low, high):
-        l = arr[i].lower()
-        l = l.replace("\n", "")
-        values.append(l + " " + str(calcScore(l)))
+    for i in pack:
+        try:
+            l = i.lower()
+            l = l.replace("\n", "")
+            values.append(l + " " + str(calcScore(l)))
+        except Exception:
+            import threading
+            print("Error in: " + threading.current_thread().getName(), i)
+            return
 
     # Couldn't concatinate lists with + because of passing the value through reference
     for i in values:
         data.append(i)
+    
+
+# Array spliting code from: https://stackoverflow.com/questions/2130016/splitting-a-list-into-n-parts-of-approximately-equal-length
+# Author: tixxit
+def splitList(arr, n):
+    k, m = divmod(len(arr), n)
+    return [arr[i*k+min(i, m):(i+1)*k+min(i+1, m)] for i in range(n)]
         

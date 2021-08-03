@@ -1,7 +1,7 @@
 from rich.progress import track
 import threading as t
 
-from lib import calcScoreInRange
+from lib import calcScoreInRange, splitList
 
 THREADS = 10
 
@@ -32,18 +32,17 @@ with open("words.txt", "r+") as fi:
     lines = fi.readlines()
     fi.seek(0)
     
-    packages = [i*len(lines)/THREADS for i in range(THREADS)]
+    splits = splitList(lines, THREADS)
     data = []
     threads = []
-    calcScoreInRange(lines, 0, len(lines), data)
-    """ for i in track(range(THREADS), description="Starting Threads"):
-        threads.append(t.Thread(target=calcScoreInRange, args=(lines, int(packages[i]), int(packages[i]+len(lines)), data)))
+    for i in track(range(THREADS), description="Starting Threads"):
+        threads.append(t.Thread(target=calcScoreInRange, args=(lines, splits[i], data)))
+        print(f"Thread {i}: {threads[i].getName()}")
         threads[i].start()
     for i in track(threads, description="Waiting for Threads"):
-        i.join() """
+        i.join()
     # Ensuring the same output as the other version
     data = "\n".join(data)
-    data = data[-1].replace("\n", "")
     
     # Writing
     fi.writelines(data)
