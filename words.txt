@@ -4759,8 +4759,7 @@
 /zweckmaeszigerweise 36
 /zwetschkenkrampus 36
 /zwischenbetrieblich 36
-/zytotoxizitaet 36
-/abhaengigkeitsgefuehl 35
+/zytotoxizitaet 36/abhaengigkeitsgefuehl 35
 /ablieferungsrueckstand 35
 /abnahmevorschrift 35
 /abonnementvorstellung 35
